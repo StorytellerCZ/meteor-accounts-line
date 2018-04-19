@@ -1,0 +1,22 @@
+<template name="configureLoginServiceDialogForWattpad">
+  <p>
+    First, you'll need to register your app on LINE. Follow these steps:
+  </p>
+  <ol>
+    <li>
+      Visit <a href="https://developers.line.me" target="_blank">https://developers.line.me</a>
+    </li>
+    <li>
+      Click on "Start using LINE Login"
+    </li>
+    <li>
+      Follow the setup steps.
+    </li>
+    <li>
+      Once setup go to App Settings.
+    </li>
+    <li>
+      Set "Callback URL" to <span class="url">{{siteUrl}}_oauth/line</span>.
+    </li>
+  </ol>
+</template>
