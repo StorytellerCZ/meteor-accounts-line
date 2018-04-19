@@ -1,13 +1,11 @@
+// import { OAuthEncryption } from 'meteor/oauth-encryption';
 const jsonwebtoken = Npm.require('jsonwebtoken');
 Line = {};
 
 OAuth.registerService('line', 2, null, query => {
-  console.dir(query);
   const response = getAccessToken(query);
-  console.dir(response);
   const identity = getIdentity(response.id_token);
-  console.dir(identity);
-  return {
+  let data = {
     serviceData: {
       id: identity.sub,
       authCode: query.code,
@@ -15,8 +13,14 @@ OAuth.registerService('line', 2, null, query => {
       expires: response.expires_in,
       refreshToken: response.refresh_token
     },
-    options: { profile: { name: identity.name, avatar: identity.picture, email: identity.email } }
+    options: { profile: { name: identity.name, avatar: identity.picture } }
   };
+
+  if (identity.email) {
+    data.serviceData.email = identity.email;
+  }
+
+  return data;
 });
 
 const getAccessToken = query => {
@@ -28,9 +32,9 @@ const getAccessToken = query => {
       headers: { Accept: 'application/json' },
       params: {
         code: query.code,
-        clientId: config.channelId,
-        clientSecret: OAuth.openSecret(config.secret),
-        redirectUri: OAuth._redirectUri('line', config)
+        client_id: config.channelId,
+        client_secret: OAuth.openSecret(config.secret),
+        redirect_uri: OAuth._redirectUri('line', config)
       }
     });
   } catch (err) {
@@ -47,19 +51,23 @@ const getAccessToken = query => {
   }
 };
 
-const getIdentity = query => {
+const getIdentity = token => {
   const config = ServiceConfiguration.configurations.findOne({ service: 'line' });
   if (!config) throw new ServiceConfiguration.ConfigError();
   let response;
 
+  // TODO: figure a better way, make jsonwebtoken do the work
+  let secret = config.secret;
+  if (typeof secret === 'object' && Package['oauth-encryption']) {
+    secret = OAuthEncryption.open(secret);
+  }
+
   try {
-    response = jsonwebtoken.verify(query.id_token,
-                                    config.secret,
-                                    {
-                                      audience: config.channelId,
-                                      issuer: 'https://access.line.me',
-                                      algorithms: ['HS256']
-                                    });
+    response = jsonwebtoken.verify(token, secret, {
+      audience: config.channelId,
+      issuer: 'https://access.line.me',
+      algorithms: ['HS256']
+    });
     // TODO setup and check nonce for additional security
   } catch (err) {
     throw Object.assign(new Error(`Couldn't decode JWT from LINE. ${err.message}`), {

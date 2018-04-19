@@ -1,7 +1,7 @@
 Accounts.oauth.registerService('line');
 
 if (Meteor.isClient) {
-  const loginWithWattpad = (options, callback) => {
+  const loginWithLine = (options, callback) => {
     // support a callback without options
     if (!callback && typeof options === 'function') {
       callback = options;
@@ -9,10 +9,10 @@ if (Meteor.isClient) {
     }
 
     const credentialRequestCompleteCallback = Accounts.oauth.credentialRequestCompleteHandler(callback);
-    Wattpad.requestCredential(options, credentialRequestCompleteCallback);
+    Line.requestCredential(options, credentialRequestCompleteCallback);
   };
-  Accounts.registerClientLoginFunction('line', loginWithWattpad);
-  Meteor.loginWithWattpad = (...args) => Accounts.applyLoginFunction('line', args);
+  Accounts.registerClientLoginFunction('line', loginWithLine);
+  Meteor.loginWithLine = (...args) => Accounts.applyLoginFunction('line', args);
 } else {
   Accounts.addAutopublishFields({
     // publish all fields including access token, which can legitimately

@@ -21,11 +21,13 @@ Line.requestCredential = (options, credentialRequestCompleteCallback) => {
 
   const loginStyle = OAuth._loginStyle('line', config, options);
 
+  const scope = config.scope.join('%20') || 'profile%20oauth';
+
   const loginUrl =
     'https://access.line.me/oauth2/v2.1/authorize' +
     '?response_type=code' +
     `&client_id=${config.channelId}` +
-    `&scope=${config.scope.join('%20')}` +
+    `&scope=${scope}` +
     `&redirect_uri=${OAuth._redirectUri('line', config)}` +
     `&state=${OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl)}`;
 
@@ -34,6 +36,9 @@ Line.requestCredential = (options, credentialRequestCompleteCallback) => {
     loginStyle,
     loginUrl,
     credentialRequestCompleteCallback,
-    credentialToken
+    credentialToken,
+    popupOptions: {
+      height: 500
+    }
   });
 };
