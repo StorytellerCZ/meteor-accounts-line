@@ -16,7 +16,7 @@ Package.onUse(api => {
   api.imply('storyteller:line-oauth@1.0.1');
 
   // If users use accounts-ui but not facebook-config-ui, give them a tip.
-  api.use(['accounts-ui', 'storyteller:line-config-ui'], ['client', 'server'], { weak: true });
+  api.use(['accounts-ui', 'storyteller:line-config-ui@1.0.1'], ['client', 'server'], { weak: true });
   api.addFiles('notice.js');
 
   api.addFiles('line.js');
