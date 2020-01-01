@@ -1,3 +1,4 @@
+/* @globals Package */
 if (
   Package['accounts-ui'] &&
   !Package['service-configuration'] &&

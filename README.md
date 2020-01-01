@@ -1,4 +1,7 @@
 # meteor-accounts-line
+
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 Authentication for LINE in Meteor.
 
 
@@ -23,6 +26,6 @@ None available (pull requests welcome).
 None available (pull requests welcome).
 
 ## Integrations
-### bozhao:link-accounts
-In the works.
+### Meteor Link Accounts
+This package is part of [bozhao:link-accounts](https://atmospherejs.com/bozhao/link-accounts) package that allows you to link multiple login accounts for your account.
 

@@ -1,3 +1,7 @@
+import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
+import { Line } from 'meteor/storyteller:line-oauth';
+
 Accounts.oauth.registerService('line');
 
 if (Meteor.isClient) {
