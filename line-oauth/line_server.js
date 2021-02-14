@@ -28,7 +28,8 @@ const getAccessToken = query => {
   if (!config) throw new ServiceConfiguration.ConfigError();
   let response;
   try {
-    response = HTTP.post('https://api.line.me/oauth2/v2.1/token?grant_type=authorization_code', {
+    response = fetch('https://api.line.me/oauth2/v2.1/token?grant_type=authorization_code', {
+      type: 'POST',
       headers: { Accept: 'application/json' },
       params: {
         code: query.code,

@@ -9,7 +9,7 @@ if (
       "but didn't install the configuration UI for LINE\n" +
       'OAuth. You can install it with:\n' +
       '\n' +
-      '    meteor add line-config-ui' +
+      '    meteor add storyteller:line-config-ui' +
       '\n'
   );
 }

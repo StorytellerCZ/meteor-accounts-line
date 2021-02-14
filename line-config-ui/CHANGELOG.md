@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 - 2021-02-14
+* Bump minimum required Meteor version to 1.9
+* Updated setup instructions
+
 ## 1.0.1 - 2020-01-01
 * Update dependencies
 * Update minimum Meteor version to 1.8.3
