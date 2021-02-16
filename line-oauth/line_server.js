@@ -3,7 +3,9 @@ const jsonwebtoken = Npm.require('jsonwebtoken');
 Line = {};
 
 OAuth.registerService('line', 2, null, query => {
-  const response = getAccessToken(query);
+  console.dir(query)
+  const responseFunc = Meteor.wrapAsync(getAccessToken);
+  const response = responseFunc(query);
   const identity = getIdentity(response.id_token);
   let data = {
     serviceData: {
@@ -11,7 +13,9 @@ OAuth.registerService('line', 2, null, query => {
       authCode: query.code,
       accessToken: response.access_token,
       expires: response.expires_in,
-      refreshToken: response.refresh_token
+      refreshToken: response.refresh_token,
+      scope: response.scope,
+      tokenType: response.token_type
     },
     options: { profile: { name: identity.name, avatar: identity.picture } }
   };
@@ -23,20 +27,24 @@ OAuth.registerService('line', 2, null, query => {
   return data;
 });
 
-const getAccessToken = query => {
+const getAccessToken = async (query, callback) => {
   const config = ServiceConfiguration.configurations.findOne({ service: 'line' });
   if (!config) throw new ServiceConfiguration.ConfigError();
-  let response;
+  let request;
   try {
-    response = fetch('https://api.line.me/oauth2/v2.1/token?grant_type=authorization_code', {
-      type: 'POST',
-      headers: { Accept: 'application/json' },
-      params: {
-        code: query.code,
-        client_id: config.channelId,
-        client_secret: OAuth.openSecret(config.secret),
-        redirect_uri: OAuth._redirectUri('line', config)
-      }
+    const content = new URLSearchParams({
+      grant_type: 'authorization_code',
+      code: query.code,
+      client_id: config.channelId,
+      client_secret: OAuth.openSecret(config.secret),
+      redirect_uri: OAuth._redirectUri('line', config)
+    });
+    request = await fetch('https://api.line.me/oauth2/v2.1/token', {
+      method: 'POST',
+      headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: content,
+      redirect: 'follow',
+      jar: false
     });
   } catch (err) {
     throw Object.assign(new Error(`Failed to complete OAuth handshake with LINE. ${err.message}`), {
@@ -44,11 +52,13 @@ const getAccessToken = query => {
     });
   }
 
+  const response = await request.json();
+
   if (response.error) {
-    // if the http response was a json object with an error attribute
+    // if the response was a json object with an error attribute
     throw new Error(`Failed to complete OAuth handshake with LINE. ${response.error_description}`);
   } else {
-    return response.data;
+    callback(undefined, response);
   }
 };
 
@@ -57,7 +67,6 @@ const getIdentity = token => {
   if (!config) throw new ServiceConfiguration.ConfigError();
   let response;
 
-  // TODO: figure a better way, make jsonwebtoken do the work
   let secret = config.secret;
   if (typeof secret === 'object' && Package['oauth-encryption']) {
     secret = OAuthEncryption.open(secret);
@@ -67,9 +76,9 @@ const getIdentity = token => {
     response = jsonwebtoken.verify(token, secret, {
       audience: config.channelId,
       issuer: 'https://access.line.me',
-      algorithms: ['HS256']
+      algorithms: ['HS256'],
+      // nonce: // TODO setup and check nonce for additional security
     });
-    // TODO setup and check nonce for additional security
   } catch (err) {
     throw Object.assign(new Error(`Couldn't decode JWT from LINE. ${err.message}`), {
       response: err.response

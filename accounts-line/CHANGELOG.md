@@ -1,6 +1,12 @@
 # Changelog
 
-## 1.0.2 - 2021-02-14
+## 1.2.1 - 2021-02-16
+* No changes
+
+## 1.2.0 - 2021-02-16
+* Bump dependencies
+
+## 1.1.0 - 2021-02-14
 * Fix link to package in notice
 * Bump minimum Meteor version to 1.9
 

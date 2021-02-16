@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.1 - 2021-02-16
+* Added links to LINE documentation
+
 ## 1.1.0 - 2021-02-14
 * Bump minimum required Meteor version to 1.9
 * Updated setup instructions

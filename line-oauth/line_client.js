@@ -23,13 +23,21 @@ Line.requestCredential = (options, credentialRequestCompleteCallback) => {
 
   const scope = config.scope.join('%20') || 'profile%20oauth';
 
-  const loginUrl =
+  let loginUrl =
     'https://access.line.me/oauth2/v2.1/authorize' +
     '?response_type=code' +
     `&client_id=${config.channelId}` +
     `&scope=${scope}` +
     `&redirect_uri=${OAuth._redirectUri('line', config)}` +
-    `&state=${OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl)}`;
+    `&state=${OAuth._stateParam(loginStyle, credentialToken, options?.redirectUrl)}`;
+
+  if (options.botPrompt) {
+    loginUrl += `&bot_prompt=${options.botPrompt}`
+  }
+
+  if (options.uiLocales) {
+    loginUrl += `&ui_locales=${options.uiLocales}`
+  }
 
   OAuth.launchLogin({
     loginService: 'line',

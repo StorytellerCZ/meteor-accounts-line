@@ -1,7 +1,7 @@
 Package.describe({
   name: 'storyteller:line-config-ui',
   summary: 'Blaze configuration templates for LINE OAuth.',
-  version: '1.1.0',
+  version: '1.1.1',
   git: 'https://github.com/StorytellerCZ/meteor-accounts-line'
 });
 
