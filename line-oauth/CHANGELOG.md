@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1 - 2021-05-07
+* Removed lost console log
+
 ## 1.2.0 - 2021-02-16
 * Added `botPrompt` and `uiLocales` options to client
 * Updated the README to document options and config parameters

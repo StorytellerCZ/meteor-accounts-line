@@ -3,7 +3,6 @@ const jsonwebtoken = Npm.require('jsonwebtoken');
 Line = {};
 
 OAuth.registerService('line', 2, null, query => {
-  console.dir(query)
   const responseFunc = Meteor.wrapAsync(getAccessToken);
   const response = responseFunc(query);
   const identity = getIdentity(response.id_token);
