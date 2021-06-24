@@ -1,4 +1,6 @@
 # Changelog
+## 1.2.2 - 2021-06-24
+* Made compatible with Meteor 2.3
 
 ## 1.2.1 - 2021-05-07
 * Removed lost console log

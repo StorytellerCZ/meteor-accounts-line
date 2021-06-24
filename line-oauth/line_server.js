@@ -1,4 +1,5 @@
-// import { OAuthEncryption } from 'meteor/oauth-encryption';
+import { Meteor } from 'meteor/meteor';
+import { ServiceConfiguration } from 'meteor/service-configuration';
 const jsonwebtoken = Npm.require('jsonwebtoken');
 Line = {};
 
@@ -68,6 +69,8 @@ const getIdentity = token => {
 
   let secret = config.secret;
   if (typeof secret === 'object' && Package['oauth-encryption']) {
+    import { OAuthEncryption } from 'meteor/oauth-encryption';
+
     secret = OAuthEncryption.open(secret);
   }
 

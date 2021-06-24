@@ -1,4 +1,6 @@
 # Changelog
+## 1.2.3 - 2021-06-24
+* Compatibility fix for Meteor 2.3
 
 ## 1.2.2 - 2021-05-07
 * Updated `line-oauth@1.2.1`

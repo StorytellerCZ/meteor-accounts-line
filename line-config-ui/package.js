@@ -8,7 +8,7 @@ Package.describe({
 Package.onUse(api => {
   api.versionsFrom('1.12');
   api.use('ecmascript', 'client');
-  api.use('templating@1.4.0', 'client');
+  api.use('templating@1.4.1', 'client');
 
   api.addFiles('line_login_button.css', 'client');
   api.addFiles(['line_configure.html', 'line_configure.js'], 'client');
