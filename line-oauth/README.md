@@ -18,6 +18,23 @@ ServiceConfiguration.configurations.upsert(
 )
 ```
 
+OR via settings json:
+
+```json
+{
+  "packages": {
+    "service-configuration": {
+      "line": {
+        "loginStyle": "popup",
+        "scope": ["profile", "openid", "email"],
+        "channelId": "youChannelId",
+        "secret": "yourSecretCode"
+      }
+    }
+  }
+}
+```
+
 #### loginStyle
 Login style, either `popup` or `redirect`. `popup` is the recommended method.
 

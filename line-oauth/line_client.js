@@ -1,3 +1,7 @@
+import { ServiceConfiguration } from 'meteor/service-configuration';
+import { Random } from 'meteor/random'
+import { OAuth } from 'meteor/oauth'
+
 Line = {};
 // Request LINE credentials for the user
 // @param options {optional}

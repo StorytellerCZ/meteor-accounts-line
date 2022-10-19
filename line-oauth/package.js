@@ -1,7 +1,7 @@
 Package.describe({
   name: 'storyteller:line-oauth',
   summary: 'LINE OAuth flow',
-  version: '1.2.2',
+  version: '1.2.3',
   git: 'https://github.com/StorytellerCZ/meteor-accounts-line'
 });
 

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { ServiceConfiguration } from 'meteor/service-configuration';
+import { OAuth } from 'meteor/oauth'
 const jsonwebtoken = Npm.require('jsonwebtoken');
 Line = {};
 
