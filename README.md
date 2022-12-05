@@ -10,7 +10,7 @@ Authentication for [LINE](https://line.me) in Meteor.
 meteor add storyteller:accounts-line
 ```
 
-Configure 
+Configure and use, see `line-oauth` package for more information.
 
 ## Templates
 ### Blaze

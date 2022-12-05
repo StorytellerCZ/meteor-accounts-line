@@ -57,3 +57,20 @@ Set this if you want to show to the user on login the option to add your channel
 
 #### uiLocales
 Display language for LINE Login screens. Specify as one or more [RFC 5646 (BCP 47)](https://tools.ietf.org/html/rfc5646) language tags, separated by spaces, in order of preference. Corresponds to the ui_locales parameter defined in the "Authentication Request" section of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html).
+
+## Calling login
+Like with all other Meteor logins, you can call the LINE login with `Meteor.loginWithLine` to which you pass options and callback method:
+
+```typescript
+Meteor.loginWithLine(
+  { loginStyle: 'popup', botPrompt: 'normal' },
+  (error) => {
+    if (error) {/* handle error */}
+    if (!error) {/* user is loged in, redirect to their dashboard or other action */}
+  }
+)
+```
+
+## Integrations
+### Meteor Link Accounts
+This package is part of [bozhao:link-accounts](https://atmospherejs.com/bozhao/link-accounts) package that allows you to link multiple login accounts for your account.
