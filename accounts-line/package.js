@@ -1,13 +1,14 @@
 Package.describe({
   name: 'storyteller:accounts-line',
   summary: 'Login service for LINE accounts',
-  version: '1.2.3',
+  version: '1.3.0',
   git: 'https://github.com/StorytellerCZ/meteor-accounts-line'
 });
 
 Package.onUse(api => {
-  api.versionsFrom(['1.12', '2.3']);
-  api.use('ecmascript');
+  api.versionsFrom('2.3');
+  api.use(['ecmascript', 'typescript']);
+  api.use('zodern:types')
   api.use('accounts-base', ['client', 'server']);
   // Export Accounts (etc) to packages using this one.
   api.imply('accounts-base', ['client', 'server']);
@@ -17,7 +18,7 @@ Package.onUse(api => {
 
   // If users use accounts-ui but not facebook-config-ui, give them a tip.
   api.use(['accounts-ui', 'storyteller:line-config-ui@1.1.2'], ['client', 'server'], { weak: true });
-  api.addFiles('notice.js');
+  api.addFiles('notice.ts');
 
-  api.addFiles('line.js');
+  api.addFiles('line.ts');
 });

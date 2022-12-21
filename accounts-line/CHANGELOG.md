@@ -1,4 +1,8 @@
 # Changelog
+## 1.3.0 - 2022-12-21
+* Typescript re-write
+* Add `zodern:types` for type support
+
 ## 1.2.3 - 2021-06-24
 * Compatibility fix for Meteor 2.3
 

@@ -1,4 +1,8 @@
 # Changelog
+## 1.2.0 - 2022-12-21
+* Typescript
+* `zodern:types` added
+* Fix helper names
 
 ## 1.1.2 - 2021-06-24
 * Update dependencies

@@ -1,11 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
-Template.configureLoginServiceDialogForWattpad.helpers({
+Template.configureLoginServiceDialogForLine.helpers({
   siteUrl: () => Meteor.absoluteUrl()
 });
 
-Template.configureLoginServiceDialogForWattpad.fields = () => [
+Template.configureLoginServiceDialogForLine.fields = () => [
   { property: 'channelId', label: 'Channel ID' },
   { property: 'secret', label: 'Channel Secret' }
 ];
