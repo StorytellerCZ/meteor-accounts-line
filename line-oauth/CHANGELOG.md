@@ -1,5 +1,11 @@
 # Changelog
-## 1.3.0 - 2022-12-13
+## 1.3.2 - 2022-12-21
+* Improve access token function to be more like Meteor's implementation
+
+## 1.3.1 - 2022-12-21
+* Fix bad import
+
+## 1.3.0 - 2022-12-21
 * Compatibility with Meteor 2.9
 * Typescript conversion
 
