@@ -3,6 +3,7 @@
 * Typescript
 * `zodern:types` added
 * Fix helper names
+* Updated templating to v1.4.2
 
 ## 1.1.2 - 2021-06-24
 * Update dependencies

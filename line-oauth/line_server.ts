@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { fetch, URLSearchParams } from 'meteor/fetch';
 import { ServiceConfiguration } from 'meteor/service-configuration';
 import { OAuth } from 'meteor/oauth'
 const jsonwebtoken = Npm.require('jsonwebtoken');
@@ -28,7 +29,7 @@ OAuth.registerService('line', 2, null, async (query) => {
   return data;
 });
 
-const getAccessToken = async (query, callback) => {
+const getAccessToken = async (query) => {
   const config = ServiceConfiguration.configurations.findOne({ service: 'line' });
   if (!config) throw new ServiceConfiguration.ConfigError();
   let request;
@@ -59,7 +60,7 @@ const getAccessToken = async (query, callback) => {
     // if the response was a json object with an error attribute
     throw new Error(`Failed to complete OAuth handshake with LINE. ${response.error_description}`);
   } else {
-    callback(undefined, response);
+    return response
   }
 };
 

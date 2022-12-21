@@ -10,8 +10,8 @@ Npm.depends({
 });
 
 Package.onUse(api => {
-  api.versionsFrom(['2.9']);
-  api.use('zodern:types', 'server')
+  api.versionsFrom(['2.9.0']);
+  api.use('zodern:types@1.0.9', 'server')
   api.use(['ecmascript', 'typescript'], ['client', 'server']);
   api.use('oauth2', ['client', 'server']);
   api.use('oauth', ['client', 'server']);

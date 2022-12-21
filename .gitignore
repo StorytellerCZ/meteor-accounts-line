@@ -1,2 +1,8 @@
 
 \.idea/
+
+accounts-line/package-lock.json
+
+line-config-ui/package-lock.json
+
+line-oauth/package-lock.json

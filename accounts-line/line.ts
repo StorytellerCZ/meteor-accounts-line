@@ -5,6 +5,7 @@ import { Line } from 'meteor/storyteller:line-oauth';
 Accounts.oauth.registerService('line');
 
 if (Meteor.isClient) {
+  // TODO export this function, so that you can access it outside of the Meteor object?
   const loginWithLine = (options, callback) => {
     // support a callback without options
     if (!callback && typeof options === 'function') {

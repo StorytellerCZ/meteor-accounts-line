@@ -8,7 +8,7 @@ Package.describe({
 Package.onUse(api => {
   api.versionsFrom('2.3');
   api.use(['ecmascript', 'typescript']);
-  api.use('zodern:types')
+  api.use('zodern:types@1.0.9')
   api.use('accounts-base', ['client', 'server']);
   // Export Accounts (etc) to packages using this one.
   api.imply('accounts-base', ['client', 'server']);

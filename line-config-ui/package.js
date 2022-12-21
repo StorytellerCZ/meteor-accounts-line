@@ -7,9 +7,9 @@ Package.describe({
 
 Package.onUse(api => {
   api.versionsFrom('2.3');
-  api.use('zodern:types', 'server')
+  api.use('zodern:types@1.0.9', 'server')
   api.use(['ecmascript', 'typescript'], 'client');
-  api.use('templating', 'client');
+  api.use('templating@1.4.2', 'client');
 
   api.addFiles('line_login_button.css', 'client');
   api.addFiles(['line_configure.html', 'line_configure.ts'], 'client');
