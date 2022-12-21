@@ -4,8 +4,8 @@ import { OAuth } from 'meteor/oauth'
 const jsonwebtoken = Npm.require('jsonwebtoken');
 Line = {};
 
-OAuth.registerService('line', 2, null, query => {
-  const responseFunc = Meteor.wrapAsync(getAccessToken);
+OAuth.registerService('line', 2, null, async (query) => {
+  const responseFunc = await getAccessToken(query);
   const response = responseFunc(query);
   const identity = getIdentity(response.id_token);
   let data = {

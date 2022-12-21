@@ -1,4 +1,7 @@
 # Changelog
+## 1.3.0 - 2022-12-13
+* Compatibility with Meteor 2.9
+
 ## 1.2.3 - 2022-10-19
 * Added missing imports into the code
 * Added settings.json settings setup to README
