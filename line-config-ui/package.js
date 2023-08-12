@@ -1,3 +1,4 @@
+/* global Package */
 Package.describe({
   name: 'storyteller:line-config-ui',
   summary: 'Blaze configuration templates for LINE OAuth.',
@@ -6,7 +7,7 @@ Package.describe({
 });
 
 Package.onUse(api => {
-  api.versionsFrom('2.3');
+  api.versionsFrom('2.3.6');
   api.use('zodern:types@1.0.9', 'server')
   api.use(['ecmascript', 'typescript'], 'client');
   api.use('templating@1.4.2', 'client');

@@ -2,6 +2,7 @@ import { fetch } from 'meteor/fetch'
 import { URLSearchParams } from 'meteor/url'
 import { ServiceConfiguration } from 'meteor/service-configuration'
 import { OAuth } from 'meteor/oauth'
+import { Meteor } from 'meteor/meteor'
 
 const jsonwebtoken = Npm.require('jsonwebtoken')
 Line = {}
@@ -29,6 +30,10 @@ OAuth.registerService('line', 2, null, async (query) => {
   return data
 })
 
+let userAgent = "Meteor"
+if (Meteor.release)
+  userAgent += '/${Meteor.release}'
+
 const getAccessToken = async (query) => {
   const config = await ServiceConfiguration.configurations.findOneAsync({
     service: 'line'
@@ -45,6 +50,7 @@ const getAccessToken = async (query) => {
     method: 'POST',
     headers: {
       Accept: 'application/json',
+      "User-Agent": userAgent,
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: content,

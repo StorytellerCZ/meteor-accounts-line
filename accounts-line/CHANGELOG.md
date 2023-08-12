@@ -1,4 +1,8 @@
 # Changelog
+## 1.3.1 - 2023-08-12
+* Updated dependencies on other packages
+* Fix `notice.ts` reference in package settings
+
 ## 1.3.0 - 2022-12-21
 * Typescript re-write
 * Add `zodern:types` for type support
