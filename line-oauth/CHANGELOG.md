@@ -1,5 +1,5 @@
 # Changelog
-## 1.4.0 - 2023-08-12
+## 1.4.0 - 2023-08-13
 * Added Meteor user agent to request
 
 ## 1.3.2 - 2022-12-21

@@ -15,11 +15,13 @@ Package.onUse(api => {
   api.imply('accounts-base', ['client', 'server']);
   api.use('accounts-oauth', ['client', 'server']);
   api.use('storyteller:line-oauth@1.4.0');
-  api.imply('storyteller:line-oauth@1.4.0');
+  api.imply('storyteller:line-oauth');
 
   // If users use accounts-ui but not facebook-config-ui, give them a tip.
   api.use(['accounts-ui', 'storyteller:line-config-ui@1.2.0'], ['client', 'server'], { weak: true });
   api.addFiles('notice.ts');
 
   api.addFiles('line.ts');
+
+  api.export('Line')
 });
