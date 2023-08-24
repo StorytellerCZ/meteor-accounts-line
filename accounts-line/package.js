@@ -2,12 +2,12 @@
 Package.describe({
   name: 'storyteller:accounts-line',
   summary: 'Login service for LINE accounts',
-  version: '1.3.1',
+  version: '1.3.2-alpha.1',
   git: 'https://github.com/StorytellerCZ/meteor-accounts-line'
 });
 
 Package.onUse(api => {
-  api.versionsFrom('2.3.6');
+  api.versionsFrom(['2.3.6', '2.9.0', '3.0-alpha.11']);
   api.use(['ecmascript', 'typescript']);
   api.use('zodern:types@1.0.9')
   api.use('accounts-base', ['client', 'server']);

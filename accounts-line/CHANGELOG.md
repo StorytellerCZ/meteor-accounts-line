@@ -1,4 +1,7 @@
 # Changelog
+## 1.3.2-alpha.1 - 2023-08-24
+* Meteor build targets added for 2.9 and 3.0-alpha.11
+
 ## 1.3.1 - 2023-08-13
 * Updated dependencies on other packages
 * Fix `notice.ts` reference in package settings

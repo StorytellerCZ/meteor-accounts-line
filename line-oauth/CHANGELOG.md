@@ -1,4 +1,7 @@
 # Changelog
+## 1.4.1-alpha.1 - 2023-08-24
+* Added target of Meteor `3.0-alpha.11` to allow building in Meteor 3.0 alpha
+
 ## 1.4.0 - 2023-08-13
 * Added Meteor user agent to request
 
