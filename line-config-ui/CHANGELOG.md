@@ -1,4 +1,9 @@
 # Changelog
+## 1.2.1 - 2024-05-04
+* Meteor build targets added for 3.0-rc.0
+* Updated `zodern:types` to version v1.0.13
+* Updated `templating` to version v1.4.3 and to accept v2.0.0-alpha300.10 as well 
+
 ## 1.2.0 - 2022-12-21
 * Typescript
 * `zodern:types` added

@@ -1,4 +1,8 @@
 # Changelog
+## 1.3.2-alpha.2 - 2024-05-04
+* Meteor build targets added for 3.0-rc.0
+* Updated `zodern:types` to version 1.0.13
+
 ## 1.3.2-alpha.1 - 2023-08-24
 * Meteor build targets added for 2.9 and 3.0-alpha.11
 

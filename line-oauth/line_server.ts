@@ -7,9 +7,9 @@ import { Meteor } from 'meteor/meteor'
 const jsonwebtoken = Npm.require('jsonwebtoken')
 Line = {}
 
-OAuth.registerService('line', 2, null, async (query) => {
+OAuth.registerService('line', 2, null, async (query: { code: string }) => {
   const response = await getAccessToken(query)
-  const identity = getIdentity(response.id_token)
+  const identity = await getIdentity(response.id_token)
   let data = {
     serviceData: {
       id: identity.sub,
@@ -34,7 +34,7 @@ let userAgent = "Meteor"
 if (Meteor.release)
   userAgent += '/${Meteor.release}'
 
-const getAccessToken = async (query) => {
+const getAccessToken = async (query: { code: string }) => {
   const config = await ServiceConfiguration.configurations.findOneAsync({
     service: 'line'
   })
@@ -73,8 +73,8 @@ const getAccessToken = async (query) => {
     })
 }
 
-const getIdentity = (token) => {
-  const config = ServiceConfiguration.configurations.findOne({
+const getIdentity = async (token: string) => {
+  const config = await ServiceConfiguration.configurations.findOneAsync({
     service: 'line'
   })
   if (!config) throw new ServiceConfiguration.ConfigError()
