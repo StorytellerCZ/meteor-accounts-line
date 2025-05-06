@@ -1,10 +1,14 @@
 # Changelog
+## 1.4.2 - 2025-05-06
+
+* Upgraded jsonwebtoken to v9.0.2
+
 ## 1.4.1 - 2024-07-16
 * Meteor 3 release
 
 ## 1.4.1-alpha.2 - 2024-05-04
 * Use async call to `ServiceConfiguration`
-* * Meteor build targets added for v3.0
+* Meteor build targets added for v3.0
 * Updated `zodern:types` to version 1.0.13
 
 ## 1.4.1-alpha.1 - 2023-08-24
