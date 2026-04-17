@@ -2,16 +2,16 @@
 Package.describe({
   name: 'storyteller:line-oauth',
   summary: 'LINE OAuth flow',
-  version: '1.4.2',
+  version: '1.4.3',
   git: 'https://github.com/StorytellerCZ/meteor-accounts-line'
 });
 
 Npm.depends({
-  jsonwebtoken: '9.0.2'
+  jsonwebtoken: '9.0.3'
 });
 
 Package.onUse(api => {
-  api.versionsFrom(['2.9.0', '3.0', '3.2']);
+  api.versionsFrom(['2.9.0', '3.0', '3.2', '3.4']);
   api.use('zodern:types@1.0.13', 'server')
   api.use(['ecmascript', 'typescript'], ['client', 'server']);
   api.use('oauth2', ['client', 'server']);

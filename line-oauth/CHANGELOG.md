@@ -1,4 +1,9 @@
 # Changelog
+## 1.4.3 - 2026-04-17
+
+* Upgraded jsonwebtoken to v9.0.2
+* Fix compat with Meteor 3.4
+
 ## 1.4.2 - 2025-05-06
 
 * Upgraded jsonwebtoken to v9.0.2

@@ -82,9 +82,7 @@ const getIdentity = async (token: string) => {
 
   let secret = config.secret
   if (typeof secret === 'object' && Package['oauth-encryption']) {
-    import { OAuthEncryption } from 'meteor/oauth-encryption'
-
-    secret = OAuthEncryption.open(secret)
+    secret = Package['oauth-encryption'].OAuthEncryption.open(secret)
   }
 
   try {
